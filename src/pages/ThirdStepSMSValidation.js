@@ -65,7 +65,7 @@ export const ThirdStepSMSValidation = ({ nextStep, prevStep, values }) => {
                                                 <label className="text-white my-1" htmlFor="verificationCode">Código de verificación</label>
                                                 <input type="text" className="form-control" name="verificationCode" onChange={handleInputChangue} autoComplete="nope" />
                                                 <p className="text-danger"></p>
-                                                <p className="text-white" id="informative"></p>
+                                                <p className="text-danger font-weight-bold" id="informative"></p>
                                             </div>
 
                                             <span className='text-white'> ¿No recibiste el código ? </span>
