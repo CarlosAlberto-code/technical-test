@@ -69,7 +69,7 @@ export const ThirdStepSMSValidation = ({ nextStep, prevStep, values }) => {
                                             </div>
 
                                             <span className='text-white'> ¿No recibiste el código ? </span>
-                                            <button className="btn text-white ">
+                                            <button className="btn text-white" disabled="true" >
                                                 <strong>Volver a enviar</strong>
                                             </button>
                                             <br />
