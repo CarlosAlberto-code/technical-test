@@ -3,10 +3,11 @@ import { Header } from '../components/Header';
 import { FirstStepForm } from './FirstStepForm';
 import { SecondStepForm } from './SecondStepForm';
 import { ThirdStepSMSValidation } from './ThirdStepSMSValidation';
-
-import '../styles/AppStyles.css';
 import { FourStepTermsAndConditions } from './FourStepTermsAndConditions';
 import { FinalStepSucces } from './FinalStepSucces';
+
+import '../styles/AppStyles.css';
+import { ProgressBar } from 'react-bootstrap';
 
 export const MainPage = () => {
 
@@ -46,6 +47,14 @@ export const MainPage = () => {
     return (
         <div className="steps-background">
             <Header />
+
+            <div className="container mb-5">
+                <div className="row">
+                    <div className="col-md-12">
+                        <ProgressBar variant="orange" now={step*25} />
+                    </div>
+                </div>
+            </div>
 
             {(() => {
                 switch (step) {

@@ -11,7 +11,7 @@ export const FirstStepForm = ({ nextStep, handleChange, values }) => {
         emailValid: false
     })
 
-    // When the user go back to enable the button
+    // When the user go back to enable the
     useEffect(() => {
         setelementsToValidate({
             firstNameValid: firstName.length > 0,

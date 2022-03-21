@@ -9,10 +9,13 @@ body, html {
     margin: 15px;
 }
 
+.progress-bar{
+    background-color: #FA4D0A;
+}
+
 .text-atomic-orange {
     color: #FA4D0A;
 }
-
 
 .icon-size{
     width: 20px;
