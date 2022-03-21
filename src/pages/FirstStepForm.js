@@ -3,6 +3,8 @@ import firstNumberImage from '../assets/Group 4015@2x.png';
 import astronaut from '../assets/Group 4033.png';
 import { Footer } from '../components/Footer';
 
+import {validateFirstName, validateEmail} from '../helpers/Validators';
+
 export const FirstStepForm = ({ nextStep, handleChange, values }) => {
 
     const { firstName, lastName, email } = values;
@@ -11,7 +13,6 @@ export const FirstStepForm = ({ nextStep, handleChange, values }) => {
         emailValid: false
     })
 
-    // When the user go back to enable the
     useEffect(() => {
         setelementsToValidate({
             firstNameValid: firstName.length > 0,
@@ -22,43 +23,12 @@ export const FirstStepForm = ({ nextStep, handleChange, values }) => {
     const { firstNameValid, emailValid } = elementsToValidate;
     const isValidForm = firstNameValid && emailValid;
 
-    const validateFirstName = (e) => {
-        const element = e.target;
-        const { value } = element;
-        if (value.trim().length < 5) {
-            element.focus();
-            element.nextElementSibling.innerHTML = 'El nombre deberá tener mínimo 5 caracteres';
-            setelementsToValidate({
-                ...elementsToValidate,
-                firstNameValid: false
-            })
-        } else {
-            element.nextElementSibling.innerHTML = '';
-            setelementsToValidate({
-                ...elementsToValidate,
-                firstNameValid: true
-            })
-        }
+    const validateInputFirstName = (e) => {
+        validateFirstName(e, elementsToValidate, setelementsToValidate);
     }
 
-    const validateEmail = (e) => {
-        const element = e.target;
-        const { value } = element;
-        const pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-        if (!pattern.test(value)) {
-            element.focus();
-            element.nextElementSibling.innerHTML = 'El email tiene un formato incorrecto';
-            setelementsToValidate({
-                ...elementsToValidate,
-                emailValid: false
-            })
-        } else {
-            element.nextElementSibling.innerHTML = '';
-            setelementsToValidate({
-                ...elementsToValidate,
-                emailValid: true
-            })
-        }
+    const validateInputEmail = (e) => {
+        validateEmail(e, elementsToValidate, setelementsToValidate);
     }
 
     return (
@@ -75,7 +45,7 @@ export const FirstStepForm = ({ nextStep, handleChange, values }) => {
                         <form className="form-row" autoComplete="new-password">
                             <div className="form-group col-md-8">
                                 <label className="text-white my-1" htmlFor="firstName">Nombre(s)</label>
-                                <input type="text" className="form-control" name="firstName" onChange={handleChange} onKeyUp={validateFirstName} value={firstName} autoComplete="nope" />
+                                <input type="text" className="form-control" name="firstName" onChange={handleChange} onKeyUp={validateInputFirstName} value={firstName} autoComplete="nope" />
                                 <p className="text-danger"></p>
                             </div>
                             <div className="form-group col-md-8">
@@ -85,7 +55,7 @@ export const FirstStepForm = ({ nextStep, handleChange, values }) => {
                             </div>
                             <div className="form-group col-md-8">
                                 <label className="text-white my-1" htmlFor="email">Correo</label>
-                                <input type="text" className="form-control" name="email" onChange={handleChange} onKeyUp={validateEmail} value={email} autoComplete="nope" />
+                                <input type="text" className="form-control" name="email" onChange={handleChange} onKeyUp={validateInputEmail} value={email} autoComplete="nope" />
                                 <p className="text-danger"></p>
                             </div>
                             <button className="atomic-button mt-2" onClick={nextStep} disabled={!isValidForm} > Enviar </button>

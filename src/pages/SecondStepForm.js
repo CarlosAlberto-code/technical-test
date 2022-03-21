@@ -4,6 +4,8 @@ import SecondNumberImage from '../assets/Group 4023@2x.png';
 import checkMark from '../assets/checkmark.png';
 import { Footer } from '../components/Footer';
 
+import {validatePhoneNumber} from '../helpers/Validators';
+
 export const SecondStepForm = ({ prevStep, nextStep, handleChange, values }) => {
 
     const { phoneNumber } = values;
@@ -21,22 +23,8 @@ export const SecondStepForm = ({ prevStep, nextStep, handleChange, values }) => 
 
     const { phoneNumberValid } = elementsToValidate;
 
-    const validatePhoneNumber = (e) => {
-        const element = e.target;
-        const { value } = element;
-        const pattern = new RegExp(/^(\d{10})/i);
-        if (!pattern.test(value)) {
-            element.focus();
-            element.nextElementSibling.innerHTML = 'Introduce un número de teléfono válido';
-            setelementsToValidate({
-                phoneNumberValid: false
-            })
-        } else {
-            element.nextElementSibling.innerHTML = '';
-            setelementsToValidate({
-                phoneNumberValid: true
-            })
-        }
+    const validateInputPhoneNumber = (e) =>{
+        validatePhoneNumber(e, elementsToValidate, setelementsToValidate);
     }
 
     const goToVerificationStep = (e) => {
@@ -69,7 +57,7 @@ export const SecondStepForm = ({ prevStep, nextStep, handleChange, values }) => 
                                         <form className="form-row">
                                             <div className="form-group col-md-8">
                                                 <label className="text-white my-1" htmlFor="phoneNumber">Número de celular</label>
-                                                <input type="text" className="form-control" name="phoneNumber" maxLength="10" onChange={handleChange} onKeyUp={validatePhoneNumber} value={phoneNumber} autoComplete="nope" />
+                                                <input type="text" className="form-control" name="phoneNumber" maxLength="10" onChange={handleChange} onKeyUp={validateInputPhoneNumber} value={phoneNumber} autoComplete="nope" />
                                                 <p className="text-danger"></p>
                                             </div>
                                             <button className="atomic-button mt-2" onClick={goToVerificationStep} disabled={!phoneNumberValid} >Enviar</button>
