@@ -69,6 +69,20 @@ body, html {
     position: relative;
 }
 
+.footer{
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: black;
+   color: white;
+   text-align: center;
+}
+
+h1{
+    font-family: geometos;
+}
+
 .main-background {
     background-image: url("../assets/Mask Group 1.png");
     background-size:cover;
@@ -78,3 +92,8 @@ body, html {
     position: relative;
 }
 
+@font-face {
+    font-family: geometos;
+    src: url('./fonts/geometos/Geometos.ttf');
+  }
+  

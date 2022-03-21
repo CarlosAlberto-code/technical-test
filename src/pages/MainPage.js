@@ -6,11 +6,12 @@ import { ThirdStepSMSValidation } from './ThirdStepSMSValidation';
 
 import '../styles/AppStyles.css';
 import { FourStepTermsAndConditions } from './FourStepTermsAndConditions';
+import { FinalStepSucces } from './FinalStepSucces';
 
 export const MainPage = () => {
 
     const [state, setState] = useState({
-        step: 2,
+        step: 1,
         firstName: "",
         lastName: "",
         email: "",
@@ -78,6 +79,9 @@ export const MainPage = () => {
                                 nextStep={nextStep}
                                 handleChange={handleChange}
                                 values={state} />)
+                    case 5:
+                        return (
+                            <FinalStepSucces />)
                     default:
                         return null
                 }
