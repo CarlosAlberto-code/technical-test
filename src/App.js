@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+import './styles/AppStyles.css';
+import astronautImg from './assets/Group 4032.png'
+
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-background" >
+      <div className="d-flex align-items-center justify-content-center">
+        <img src={astronautImg} alt="" />
+        <div className="">
+          <span className="h1 text-white" >Desarrolla todo</span><br />
+          <span className="h1 text-warning" >tu POTENCIAL</span><br />
+          <span className="h1 text-white" >dentro del equipo</span><br />
+          <span className="h1 text-warning" >ATOMIC</span><span className="h1 text-white" >LABS</span><br /><br />
+          <button type="button" className="btn btn-primary">¡Quiero ser parte!</button>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
-
-export default App;
