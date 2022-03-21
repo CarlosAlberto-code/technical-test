@@ -7,7 +7,7 @@ import { FourStepTermsAndConditions } from './FourStepTermsAndConditions';
 import { FinalStepSucces } from './FinalStepSucces';
 
 import '../styles/AppStyles.css';
-import { ProgressBar } from 'react-bootstrap';
+import { ProgressBarIndicator } from '../components/ProgressBarIndicator';
 
 export const MainPage = () => {
 
@@ -48,13 +48,7 @@ export const MainPage = () => {
         <div className="steps-background">
             <Header />
 
-            <div className="container mb-5">
-                <div className="row">
-                    <div className="col-md-12">
-                        <ProgressBar variant="orange" now={step*25} />
-                    </div>
-                </div>
-            </div>
+            {step <= 4 && <ProgressBarIndicator step={step} />}
 
             {(() => {
                 switch (step) {
