@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import astronaut from '../assets/Group 4034.png';
 import SecondNumberImage from '../assets/Group 4023@2x.png';
 import checkMark from '../assets/checkmark.png';
@@ -11,6 +11,13 @@ export const SecondStepForm = ({ prevStep, nextStep, handleChange, values }) => 
     const [elementsToValidate, setelementsToValidate] = useState({
         phoneNumberValid: false
     })
+
+    // When the user go back to enable the button
+    useEffect(() => {
+        setelementsToValidate({
+            phoneNumberValid: phoneNumber != ''
+        })
+    }, []);
 
     const { phoneNumberValid } = elementsToValidate;
 

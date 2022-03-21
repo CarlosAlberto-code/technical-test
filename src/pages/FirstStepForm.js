@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import firstNumberImage from '../assets/Group 4015@2x.png';
 import astronaut from '../assets/Group 4033.png';
 import { Footer } from '../components/Footer';
 
 export const FirstStepForm = ({ nextStep, handleChange, values }) => {
 
-    const { firstName, lastName, email, step } = values;
+    const { firstName, lastName, email } = values;
     const [elementsToValidate, setelementsToValidate] = useState({
         firstNameValid: false,
         emailValid: false
     })
+
+    // When the user go back to enable the button
+    useEffect(() => {
+        setelementsToValidate({
+            firstNameValid: firstName.length > 0,
+            emailValid: email.length > 0
+        })
+    }, []);
 
     const { firstNameValid, emailValid } = elementsToValidate;
     const isValidForm = firstNameValid && emailValid;

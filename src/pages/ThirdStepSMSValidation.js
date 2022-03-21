@@ -55,7 +55,7 @@ export const ThirdStepSMSValidation = ({ nextStep, prevStep, values }) => {
                                         </h1>
                                         <p className="text-white my-4" >
                                             Te enviamos un SMS al número: <br />
-                                            +52{phoneNumber} <img className="icon-size" src={editIcon} alt="edit number" />
+                                            +52{phoneNumber} <img className="icon-size" src={editIcon} onClick={ prevStep } alt="edit number" />
                                         </p>
 
                                         <p className="text-white">Ingresa el código de verificación</p>
